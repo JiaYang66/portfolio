@@ -6,76 +6,53 @@
 <title>黄嘉杨 · 视觉作品集</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#faf8f5;--card:#fff;--border:#e8e4df;--text:#3a3a3a;--muted:#999;--accent:#c7744b;--dark:#1a1a1a}
-body{font-family:"Noto Serif SC","Source Han Serif SC","STSong","Songti SC","SimSun","Microsoft YaHei",serif;background:var(--bg);color:var(--text);line-height:1.7}
+:root{--bg:#080808;--card:#111;--border:#1e1e1e;--text:#b8b8b8;--muted:#666;--accent:#e08850}
+body{font-family:"Noto Serif SC","Source Han Serif SC","STSong","Microsoft YaHei",serif;background:var(--bg);color:var(--text);line-height:1.7}
 .container{max-width:1300px;margin:0 auto;padding:0 2.5rem}
-
-/* Hero */
-.hero{text-align:center;padding:6rem 1.5rem 3rem}
-.hero .brand{font-size:.75rem;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
-.hero h1{font-size:3rem;font-weight:400;letter-spacing:8px;color:var(--dark);font-family:"Noto Serif SC","STSong",serif}
-.hero .role{font-size:1rem;color:var(--muted);letter-spacing:3px;margin:.6rem 0 1.5rem}
-.hero .contact{display:flex;gap:2rem;justify-content:center;font-size:.85rem;color:var(--muted);flex-wrap:wrap}
-.hero .contact a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
-
-/* Nav */
-nav{position:sticky;top:0;z-index:10;background:rgba(250,248,245,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;justify-content:center;gap:3rem;padding:1.2rem 0}
+.hero{text-align:center;padding:5rem 1.5rem 2.5rem}
+.hero .brand{font-size:.72rem;letter-spacing:5px;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
+.hero h1{font-size:3rem;font-weight:300;letter-spacing:8px;color:#e0e0e0;font-family:"Noto Serif SC","STSong",serif}
+.hero .role{font-size:.95rem;color:var(--muted);letter-spacing:3px;margin:.5rem 0 1.2rem}
+.hero .contact{display:flex;gap:2rem;justify-content:center;font-size:.82rem;color:var(--muted);flex-wrap:wrap}
+.hero .contact a{color:var(--accent);text-decoration:none}
+nav{position:sticky;top:0;z-index:10;background:rgba(8,8,8,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;justify-content:center;gap:3rem;padding:1.2rem 0}
 nav a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:2px;transition:.2s}
 nav a:hover,nav a.active{color:var(--accent)}
-
 section{padding:4rem 0}
 .sec-h{text-align:center;margin-bottom:2.5rem}
-.sec-h .num{font-size:.75rem;color:var(--accent);letter-spacing:3px;display:block;margin-bottom:.5rem}
-.sec-h h2{font-size:1.8rem;font-weight:400;letter-spacing:3px;color:var(--dark);font-family:"Noto Serif SC","STSong",serif}
-
-.sub{text-align:center;font-size:.85rem;color:var(--accent);letter-spacing:2px;margin:2.5rem 0 1.5rem;text-transform:uppercase}
-
-/* Video grids */
+.sec-h .num{font-size:.72rem;color:var(--accent);letter-spacing:3px;display:block;margin-bottom:.5rem}
+.sec-h h2{font-size:1.8rem;font-weight:300;letter-spacing:3px;color:#ddd;font-family:"Noto Serif SC","STSong",serif}
+.sub{text-align:center;font-size:.82rem;color:var(--accent);letter-spacing:2px;margin:2.5rem 0 1.5rem;text-transform:uppercase}
 .v-grid-land{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.5rem}
 .v-grid-port{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem;justify-content:center}
-
-.v-card{background:var(--card);border-radius:8px;overflow:hidden;border:1px solid var(--border);transition:.25s;box-shadow:0 1px 3px rgba(0,0,0,.03)}
-.v-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
-.v-card.landscape .player{aspect-ratio:16/9;position:relative;background:#f0ede8}
-.v-card.portrait .player{aspect-ratio:9/16;position:relative;background:#f0ede8}
+.v-card{background:var(--card);border-radius:8px;overflow:hidden;border:1px solid var(--border);transition:.25s}
+.v-card:hover{border-color:#333;transform:translateY(-2px)}
+.v-card.landscape .player{aspect-ratio:16/9;position:relative;background:#0a0a0a}
+.v-card.portrait .player{aspect-ratio:9/16;position:relative;background:#0a0a0a}
 .v-card .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .v-card .meta{padding:1rem 1.1rem}
-.v-card .meta h3{font-size:.95rem;font-weight:400;color:var(--dark);margin-bottom:3px}
-.v-card .meta .info{font-size:.78rem;color:var(--muted)}
+.v-card .meta h3{font-size:.95rem;font-weight:400;color:#ccc;margin-bottom:3px}
+.v-card .meta .info{font-size:.75rem;color:var(--muted)}
 .v-card .meta .tags{margin-top:7px}
-.tag{display:inline-block;padding:3px 10px;border-radius:2px;font-size:.7rem;margin:2px 5px 2px 0;background:var(--bg);color:var(--accent);border:1px solid var(--border)}
-
-/* Photos */
+.tag{display:inline-block;padding:3px 10px;border-radius:2px;font-size:.68rem;margin:2px 5px 2px 0;background:#181818;color:var(--accent);border:1px solid #1e1e1e}
 .p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
-.p-card{aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:var(--card);cursor:zoom-in;border:1px solid var(--border);transition:.25s}
-.p-card:hover{transform:scale(1.02);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.p-card{aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:var(--card);cursor:zoom-in;border:1px solid var(--border);transition:.25s;position:relative}
+.p-card:hover{transform:scale(1.02);border-color:#444}
 .p-card img{width:100%;height:100%;object-fit:cover}
-.p-card .cap{position:absolute;bottom:0;left:0;right:0;padding:.8rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,.7));opacity:0;transition:.25s}
+.p-card .cap{position:absolute;bottom:0;left:0;right:0;padding:.8rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,.8));opacity:0;transition:.25s}
 .p-card:hover .cap{opacity:1}
-.p-card .cap span{font-size:.75rem;color:#fff}
-
-/* About */
+.p-card .cap span{font-size:.72rem;color:#ddd}
 .about{max-width:800px;margin:0 auto;text-align:center}
 .about p{font-size:1rem;color:var(--muted);line-height:2.2;margin-bottom:1.5rem}
 .about .skill-wrap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:2rem}
-.about .skill-wrap span{font-size:.8rem;padding:6px 16px;border-radius:2px;background:var(--bg);color:var(--muted);border:1px solid var(--border)}
-
-/* Lightbox */
-.lb{display:none;position:fixed;inset:0;background:rgba(20,20,20,.98);z-index:100;align-items:center;justify-content:center;cursor:zoom-out}
+.about .skill-wrap span{font-size:.8rem;padding:6px 16px;border-radius:2px;background:#111;color:var(--muted);border:1px solid var(--border)}
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:100;align-items:center;justify-content:center;cursor:zoom-out}
 .lb.on{display:flex}
 .lb img{max-width:92%;max-height:90%;border-radius:2px}
-.lb .x{position:absolute;top:2rem;right:2.5rem;font-size:2rem;color:#888;cursor:pointer}
-
-.ft{text-align:center;padding:4rem 0 3rem;color:#bbb;font-size:.8rem;border-top:1px solid var(--border);margin-top:2rem}
+.lb .x{position:absolute;top:2rem;right:2.5rem;font-size:2.5rem;color:#666;cursor:pointer}
+.ft{text-align:center;padding:4rem 0 3rem;color:#444;font-size:.78rem;border-top:1px solid var(--border);margin-top:2rem}
 .ft a{color:var(--accent);text-decoration:none}
-
-@media(max-width:768px){
-  .v-grid-land{grid-template-columns:1fr}
-  .v-grid-port{grid-template-columns:repeat(2,1fr)}
-  .p-grid{grid-template-columns:repeat(2,1fr)}
-  .hero h1{font-size:1.8rem}
-  nav{gap:1.5rem}
-}
+@media(max-width:768px){.v-grid-land{grid-template-columns:1fr}.v-grid-port{grid-template-columns:repeat(2,1fr)}.p-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:1.8rem}nav{gap:1.5rem}}
 </style>
 </head>
 <body>
@@ -100,7 +77,6 @@ section{padding:4rem 0}
 
 <div class="container">
 
-<!-- ====== 商业作品 ====== -->
 <section id="commercial">
   <div class="sec-h"><span class="num">01</span><h2>商业作品</h2></div>
 
@@ -113,21 +89,21 @@ section{padding:4rem 0}
   <div class="sub">产品功能演示 · 竖屏</div>
   <div class="v-grid-port">
     <div class="v-card portrait"><div class="player"><iframe src="//player.bilibili.com/player.html?bvid=BV1hqKn6FECp&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe></div><div class="meta"><h3>咖啡吸尘器</h3><div class="info">35s</div><div class="tags"><span class="tag">产品摄影</span><span class="tag">布光</span></div></div></div>
-    <div class="v-card portrait"><div class="player"><iframe src="//player.bilibili.com/player.html?bvid=BV1hqKn6FECe&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe></div><div class="meta"><h3>磨萃一体 · 快剪</h3><div class="info">6s</div><div class="tags"><span class="tag">快剪</span></div></div></div>
+    <div class="v-card portrait"><div class="player"><iframe src="//player.bilibili.com/player.html?bvid=BV1hqKn6FECe&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe></div><div class="meta"><h3>磨萃一体·快剪</h3><div class="info">6s</div><div class="tags"><span class="tag">快剪</span></div></div></div>
   </div>
 
-  <div class="sub">小红书 · 横屏</div>
+  <div class="sub">小红书</div>
   <div class="v-grid-land">
     <div class="v-card landscape"><div class="player"><iframe src="//player.bilibili.com/player.html?bvid=BV18zKn6ZEVN&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe></div><div class="meta"><h3>咖啡饮品制作 — 沉浸式拍摄</h3><div class="info">56s · 4K</div><div class="tags"><span class="tag">小红书</span><span class="tag">沉浸式</span></div></div></div>
     <div class="v-card landscape"><div class="player"><iframe src="//player.bilibili.com/player.html?bvid=BV18zKn6ZEHj&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe></div><div class="meta"><h3>冰淇淋机 — 小红书种草视频</h3><div class="info">1:32</div><div class="tags"><span class="tag">小红书</span><span class="tag">种草</span></div></div></div>
     <div class="v-card landscape"><div class="player"><iframe src="//player.bilibili.com/player.html?bvid=BV1SzKn6ZEWe&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe></div><div class="meta"><h3>磨豆机 — 小红书好物推荐</h3><div class="info">1:02 · 4K</div><div class="tags"><span class="tag">小红书</span><span class="tag">好物推荐</span></div></div></div>
-    <div class="v-card portrait"><div class="player"><iframe src="//player.bilibili.com/player.html?bvid=BV1bzKn6ZERa&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe></div><div class="meta"><h3>磨豆机 — 场景化种草</h3><div class="info">1:05</div><div class="tags"><span class="tag">场景化</span><span class="tag">种草</span></div></div></div>
   </div>
 
   <div class="sub">抖音信息流 · 竖屏</div>
   <div class="v-grid-port">
     <div class="v-card portrait"><div class="player"><iframe src="//player.bilibili.com/player.html?bvid=BV1QqKn6FEMA&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe></div><div class="meta"><h3>咖啡饮品制作</h3><div class="info">59s · 4K竖屏</div><div class="tags"><span class="tag">抖音</span><span class="tag">投流</span></div></div></div>
     <div class="v-card portrait"><div class="player"><iframe src="//player.bilibili.com/player.html?bvid=BV1hqKn6FE4g&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe></div><div class="meta"><h3>咖啡饮品制作②</h3><div class="info">53s · 4K竖屏</div><div class="tags"><span class="tag">抖音</span><span class="tag">投流</span></div></div></div>
+    <div class="v-card portrait"><div class="player"><iframe src="//player.bilibili.com/player.html?bvid=BV1bzKn6ZERa&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe></div><div class="meta"><h3>磨豆机 — 场景化种草</h3><div class="info">1:05</div><div class="tags"><span class="tag">场景化</span></div></div></div>
   </div>
 
   <div class="sub">电商投流素材 · 竖屏</div>
@@ -138,7 +114,6 @@ section{padding:4rem 0}
   </div>
 </section>
 
-<!-- ====== 个人创作 ====== -->
 <section id="personal">
   <div class="sec-h"><span class="num">02</span><h2>个人创作</h2></div>
 
@@ -155,7 +130,6 @@ section{padding:4rem 0}
   </div>
 </section>
 
-<!-- ====== 摄影 ====== -->
 <section id="photo">
   <div class="sec-h"><span class="num">03</span><h2>摄影作品</h2></div>
   <div class="sub">产品拍摄</div><div class="p-grid" id="photo-product"></div>
@@ -164,7 +138,6 @@ section{padding:4rem 0}
   <div class="sub">西北</div><div class="p-grid" id="photo-xibei"></div>
 </section>
 
-<!-- ====== 关于 ====== -->
 <section id="about">
   <div class="sec-h"><span class="num">04</span><h2>关于</h2></div>
   <div class="about">
@@ -188,44 +161,50 @@ section{padding:4rem 0}
 <div class="lb" id="lb" onclick="this.classList.remove('on')"><span class="x">&times;</span><img id="lbImg" onclick="event.stopPropagation()"></div>
 
 <script>
+const CDN='https://cdn.jsdelivr.net/gh/JiaYang66/portfolio@main';
 document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',function(){document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
-function lb(src){document.getElementById('lbImg').src=src;document.getElementById('lb').classList.add('on')}
+function lb(src){document.getElementById('lbImg').src=CDN+'/'+src;document.getElementById('lb').classList.add('on')}
 
-const photoMap={
+const imgs={
   'photo-product':[
-    'images/产品拍摄/bf1082d13931d277ad7d7a81e0bede84.jpg',
-    'images/产品拍摄/未命名_1.1.1.jpg','images/产品拍摄/未命名_1.2.1.jpg',
-    'images/产品拍摄/未命名_1.3.1.jpg','images/产品拍摄/未命名_1.4.1.jpg',
-    'images/产品拍摄/未命名_1.5.1.jpg','images/产品拍摄/未命名_1.5.2.jpg',
-    'images/产品拍摄/未命名_1.6.1.jpg','images/产品拍摄/未命名_1.7.1.jpg',
-    'images/产品拍摄/未命名_1.8.1.jpg','images/产品拍摄/未命名_1.9.1.jpg',
-    'images/产品拍摄/未命名_1.10.1.jpg','images/产品拍摄/未命名_1.17.1.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/bf1082d13931d277ad7d7a81e0bede84.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.1.1.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.2.1.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.3.1.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.4.1.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.5.1.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.5.2.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.6.1.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.7.1.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.8.1.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.9.1.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.10.1.jpg',
+    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.17.1.jpg',
   ],
   'photo-chuanxi':[
-    'images/个人图片作品/川西/玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措.jpg',
-    'images/个人图片作品/川西/敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景.jpg',
-    'images/个人图片作品/川西/何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼.jpg',
-    'images/个人图片作品/川西/"我路过经幡祝你一路平安"藏民说_"经幡在_神明在"_#川西自驾_#经幡_#雪山_#川西_#理塘.jpg',
+    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E5%B7%9D%E8%A5%BF/%E7%8E%89%E9%BE%99%E6%8B%89%E6%8E%AA%EF%BC%8C%E7%BE%8E%E5%88%B0%E5%A4%B1%E8%AF%AD%EF%BC%81%23%E6%97%85%E8%A1%8C%E6%91%84%E5%BD%B1_%23%E9%9B%AA%E5%B1%B1_%23%E5%B7%9D%E8%A5%BF_%23%E5%B7%9D%E8%A5%BF%E7%BE%8E%E6%99%AF_%23%E7%8E%89%E9%BE%99%E6%8B%89%E6%8E%AA.jpg',
+    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E5%B7%9D%E8%A5%BF/%E6%95%AC%E5%95%A5%E4%B8%8D%E5%A6%82%E6%95%AC%E8%87%AA%E7%94%B1_%23%E6%91%84%E5%BD%B1_%23%E6%97%85%E8%A1%8C%E6%91%84%E5%BD%B1_%23%E6%97%85%E8%A1%8C%E7%A2%8E%E7%89%87_%23%E5%B7%9D%E8%A5%BF_%23%E5%B7%9D%E8%A5%BF%E7%BE%8E%E6%99%AF.jpg',
   ],
   'photo-hainan':[
-    'images/个人图片作品/海南/我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩.jpg',
+    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E6%B5%B7%E5%8D%97/%E6%88%91%E4%B8%80%E7%9B%B4%E6%8E%A2%E7%B4%A2%E6%9C%80%E9%80%82%E5%90%88%E6%90%AD%E3%80%8C%E6%B5%86%E6%9E%9C%E3%80%8D%E7%9A%84%E7%94%BB%E9%9D%A2_%E7%9B%B4%E5%88%B0%E6%88%91%E6%9D%A5%E5%88%B0%E6%B5%B7%E5%8D%97_%E5%BD%93%E6%B5%B7%E9%A3%8E%E6%89%91%E9%9D%A2%E8%80%8C%E6%9D%A5%E7%9A%84%E4%B8%80%E5%88%BB_%E6%89%80%E6%9C%89%E7%9A%84%E6%83%B3%E8%B1%A1%EF%BC%8C%E9%83%BD%E6%9C%89%E4%BA%86%E7%AD%94%E6%A1%88%E3%80%82_%23%E6%B5%B7%E5%8D%97_%23%E4%B8%89%E4%BA%9A_%23%E6%91%84%E5%BD%B1_%23%E6%B5%B7%E8%BE%B9_%23%E6%B5%B7%E6%BB%A9.jpg',
   ],
   'photo-xibei':[
-    'images/个人图片作品/西北/cf030956927c3841f3d5063b5fce4a7d.jpg',
-    'images/个人图片作品/西北/下雪后的洪水泥河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水泥河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影.jpg',
-    'images/个人图片作品/西北/3bca8e21578308690d48a240393ec5ae.jpg',
-    'images/个人图片作品/西北/065fb0a46c0058ba12110ba96c4ba1d0.jpg',
+    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E8%A5%BF%E5%8C%97/cf030956927c3841f3d5063b5fce4a7d.jpg',
+    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E8%A5%BF%E5%8C%97/%E4%B8%8B%E9%9B%AA%E5%90%8E%E7%9A%84%E6%B4%AA%E6%B0%B4%E6%B2%B3%E5%A4%A7%E5%B3%A1%E8%B0%B7%EF%BC%8C%E5%A4%AA%E5%A3%AE%E8%A7%82%E4%BA%86%E3%80%82%E6%9C%AC%E4%BB%A5%E4%B8%BA%E4%B8%80%E8%B7%AF%E4%B8%8A%E4%B8%8D%E4%BC%9A%E7%94%A8%E5%88%B0%E9%98%B2%E6%BB%91%E9%93%BE%EF%BC%8C%E6%B2%A1%E6%83%B3%E5%88%B0%E4%BB%8A%E5%A4%A9%E5%AE%83%E6%98%AF%E6%8B%AF%E6%95%91%E6%88%91%E7%9A%84hero_%23%E6%B4%AA%E6%B0%B4%E6%B2%B3%E5%A4%A7%E5%B3%A1%E8%B0%B7_%23%E8%82%83%E5%B7%9E%E5%8C%BA_%23%E5%B0%8F%E9%B9%8F_%23%E5%B0%8F%E9%B9%8Fmona_%23%E6%91%84%E5%BD%B1.jpg',
+    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E8%A5%BF%E5%8C%97/3bca8e21578308690d48a240393ec5ae.jpg',
+    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E8%A5%BF%E5%8C%97/065fb0a46c0058ba12110ba96c4ba1d0.jpg',
   ],
 };
-Object.entries(photoMap).forEach(([id,files])=>{
+Object.entries(imgs).forEach(([id,files])=>{
   const grid=document.getElementById(id);
   if(!grid) return;
   files.forEach(f=>{
     const card=document.createElement('div');
     card.className='p-card';
+    const url=CDN+'/'+f;
     card.onclick=()=>lb(f);
-    const name=decodeURIComponent(f.split('/').pop().replace(/\.[^.]+$/,'')).substring(0,30);
-    card.innerHTML='<img src="'+f+'" loading="lazy" onerror="this.parentElement.style.display=\'none\'"><div class="cap"><span>'+name+'</span></div>';
+    const name=decodeURIComponent(f.split('/').pop().replace(/\.[^.]+$/,'')).substring(0,28);
+    card.innerHTML='<img src="'+url+'" loading="lazy" onerror="this.parentElement.style.display=\'none\'"><div class="cap"><span>'+name+'</span></div>';
     grid.appendChild(card);
   });
 });
