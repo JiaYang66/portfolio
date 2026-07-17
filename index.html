@@ -23,16 +23,14 @@ section{padding:4rem 0}
 .sec-h .num{font-size:.72rem;color:var(--accent);letter-spacing:3px;display:block;margin-bottom:.5rem}
 .sec-h h2{font-size:1.8rem;font-weight:300;letter-spacing:3px;color:#ddd}
 .sub{text-align:center;font-size:.82rem;color:var(--accent);letter-spacing:2px;margin:2.5rem 0 1.5rem;text-transform:uppercase}
-.v-grid-land{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.5rem}
-.v-grid-port{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem;justify-content:center}
+.vg-land{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.5rem}
+.vg-port{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem;justify-content:center}
 .v-card{background:var(--card);border-radius:8px;overflow:hidden;border:1px solid var(--border);transition:.25s}
 .v-card:hover{border-color:#333;transform:translateY(-2px)}
 .v-card .player{position:relative;background:#0a0a0a}
 .v-card.landscape .player{aspect-ratio:16/9}
 .v-card.portrait .player{aspect-ratio:9/16}
-.v-card .player iframe,.v-card .player .ph{position:absolute;inset:0;width:100%;height:100%;border:0}
-.v-card .player .ph{display:flex;align-items:center;justify-content:center;color:#444;font-size:.8rem;cursor:pointer;transition:.2s;background:#0a0a0a}
-.v-card .player .ph:hover{color:var(--accent)}
+.v-card .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .v-card .meta{padding:1rem 1.1rem}
 .v-card .meta h3{font-size:.95rem;font-weight:400;color:#ccc;margin-bottom:3px}
 .v-card .meta .info{font-size:.75rem;color:var(--muted)}
@@ -55,7 +53,7 @@ section{padding:4rem 0}
 .lb .x{position:absolute;top:2rem;right:2.5rem;font-size:2.5rem;color:#666;cursor:pointer}
 .ft{text-align:center;padding:4rem 0 3rem;color:#444;font-size:.78rem;border-top:1px solid var(--border);margin-top:2rem}
 .ft a{color:var(--accent);text-decoration:none}
-@media(max-width:768px){.v-grid-land{grid-template-columns:1fr}.v-grid-port{grid-template-columns:repeat(2,1fr)}.p-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:1.8rem}nav{gap:1.5rem}}
+@media(max-width:768px){.vg-land{grid-template-columns:1fr}.vg-port{grid-template-columns:repeat(2,1fr)}.p-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:1.8rem}nav{gap:1.5rem}}
 </style>
 </head>
 <body>
@@ -82,35 +80,25 @@ section{padding:4rem 0}
 
 <section id="commercial">
   <div class="sec-h"><span class="num">01</span><h2>商业作品</h2></div>
-  <div class="sub">产品宣传片 · 横屏</div>
-  <div class="v-grid-land"><script>renderVideo('BV141Kn69EEY','landscape','咖啡磨豆机 — 品牌宣传片','41s · 4K','品牌宣传,产品视频');renderVideo('BV141Kn69Ep1','landscape','磨萃一体咖啡机 — 产品宣传片','53s · 4K','产品宣传');</script></div>
-
-  <div class="sub">产品功能演示 · 竖屏</div>
-  <div class="v-grid-port"><script>renderVideo('BV1hqKn6FECp','portrait','咖啡吸尘器','35s','产品摄影,布光');renderVideo('BV1hqKn6FECe','portrait','磨萃一体·快剪','6s','快剪');</script></div>
-
-  <div class="sub">小红书</div>
-  <div class="v-grid-land"><script>renderVideo('BV18zKn6ZEVN','landscape','咖啡饮品制作 — 沉浸式拍摄','56s · 4K','小红书,沉浸式');renderVideo('BV18zKn6ZEHj','landscape','冰淇淋机 — 小红书种草视频','1:32','小红书,种草');renderVideo('BV1SzKn6ZEWe','landscape','磨豆机 — 小红书好物推荐','1:02 · 4K','小红书,好物推荐');</script></div>
-
-  <div class="sub">抖音信息流 · 竖屏</div>
-  <div class="v-grid-port"><script>renderVideo('BV1QqKn6FEMA','portrait','咖啡饮品制作','59s · 4K竖屏','抖音,投流');renderVideo('BV1hqKn6FE4g','portrait','咖啡饮品制作②','53s · 4K竖屏','抖音,投流');renderVideo('BV1bzKn6ZERa','portrait','磨豆机 — 场景化种草','1:05','场景化');</script></div>
-
-  <div class="sub">电商投流素材 · 竖屏</div>
-  <div class="v-grid-port"><script>renderVideo('BV1DqKn6FEr2','portrait','促销活动篇','22s','投流,促销');renderVideo('BV1hqKn6FEyf','portrait','促销活动篇②','34s','投流,促销');renderVideo('BV13qKn6cEYZ','portrait','用户场景篇','29s','投流,场景');</script></div>
+  <div class="sub">产品宣传片 · 横屏</div><div class="vg-land" id="v-commercial-brand"></div>
+  <div class="sub">产品功能演示 · 竖屏</div><div class="vg-port" id="v-commercial-demo"></div>
+  <div class="sub">小红书</div><div class="vg-land" id="v-commercial-xhs"></div>
+  <div class="sub">抖音信息流 · 竖屏</div><div class="vg-port" id="v-commercial-dy"></div>
+  <div class="sub">电商投流素材 · 竖屏</div><div class="vg-port" id="v-commercial-ad"></div>
 </section>
 
 <section id="personal">
   <div class="sec-h"><span class="num">02</span><h2>个人创作</h2></div>
-  <div class="sub">无人机航拍 · 横屏</div>
-  <div class="v-grid-land"><script>renderVideo('BV141Kn69ENg','landscape','无人机航拍 — 川西高原','29s','航拍,川西');renderVideo('BV1x1Kn69EQc','landscape','无人机航拍 — 海南海岸线','15s · 4K','航拍,海南');renderVideo('BV121Kn69Emp','landscape','无人机航拍 — 翡翠湖','32s','航拍,翡翠湖');</script></div>
-  <div class="sub">创意短片 · 横屏</div>
-  <div class="v-grid-land"><script>renderVideo('BV1QqKn6FENc','landscape','创意短片 — 视觉节奏与情绪表达','40s · 4K','创意,情绪');</script></div>
+  <div class="sub">无人机航拍 · 横屏</div><div class="vg-land" id="v-personal-drone"></div>
+  <div class="sub">创意短片 · 横屏</div><div class="vg-land" id="v-personal-creative"></div>
 </section>
 
-<section id="photo"><div class="sec-h"><span class="num">03</span><h2>摄影作品</h2></div>
-<div class="sub">产品拍摄</div><div class="p-grid" id="g-product"></div>
-<div class="sub">川西</div><div class="p-grid" id="g-chuanxi"></div>
-<div class="sub">海南</div><div class="p-grid" id="g-hainan"></div>
-<div class="sub">西北</div><div class="p-grid" id="g-xibei"></div>
+<section id="photo">
+  <div class="sec-h"><span class="num">03</span><h2>摄影作品</h2></div>
+  <div class="sub">产品拍摄</div><div class="p-grid" id="g-product"></div>
+  <div class="sub">川西</div><div class="p-grid" id="g-chuanxi"></div>
+  <div class="sub">海南</div><div class="p-grid" id="g-hainan"></div>
+  <div class="sub">西北</div><div class="p-grid" id="g-xibei"></div>
 </section>
 
 <section id="about">
@@ -127,75 +115,123 @@ section{padding:4rem 0}
 <div class="lb" id="lb" onclick="this.classList.remove('on')"><span class="x">&times;</span><img id="lbImg" onclick="event.stopPropagation()"></div>
 
 <script>
-// ===== VIDEO: immediate load with mutual exclusion =====
-let activeIframe=null;
+// ===== VIDEO DATA =====
+const videos={
+  'v-commercial-brand':[
+    {bv:'BV141Kn69EEY',t:'landscape',title:'咖啡磨豆机 — 品牌宣传片',dur:'41s · 4K',tags:'品牌宣传,产品视频'},
+    {bv:'BV141Kn69Ep1',t:'landscape',title:'磨萃一体咖啡机 — 产品宣传片',dur:'53s · 4K',tags:'产品宣传'},
+  ],
+  'v-commercial-demo':[
+    {bv:'BV1hqKn6FECp',t:'portrait',title:'咖啡吸尘器 — 产品功能演示',dur:'35s',tags:'产品摄影,布光'},
+    {bv:'BV1hqKn6FECe',t:'portrait',title:'磨萃一体咖啡机 · 快剪版',dur:'6s',tags:'快剪'},
+  ],
+  'v-commercial-xhs':[
+    {bv:'BV18zKn6ZEVN',t:'landscape',title:'咖啡饮品制作 — 沉浸式拍摄',dur:'56s · 4K',tags:'小红书,沉浸式'},
+    {bv:'BV18zKn6ZEHj',t:'landscape',title:'冰淇淋机 — 小红书种草视频',dur:'1:32',tags:'小红书,种草'},
+    {bv:'BV1SzKn6ZEWe',t:'landscape',title:'磨豆机 — 小红书好物推荐',dur:'1:02 · 4K',tags:'小红书,好物推荐'},
+  ],
+  'v-commercial-dy':[
+    {bv:'BV1QqKn6FEMA',t:'portrait',title:'咖啡饮品制作 — 抖音信息流',dur:'59s · 4K',tags:'抖音,投流'},
+    {bv:'BV1hqKn6FE4g',t:'portrait',title:'咖啡饮品制作 — 信息流②',dur:'53s · 4K',tags:'抖音,投流'},
+    {bv:'BV1bzKn6ZERa',t:'portrait',title:'磨豆机 — 场景化种草',dur:'1:05',tags:'场景化,种草'},
+  ],
+  'v-commercial-ad':[
+    {bv:'BV1DqKn6FEr2',t:'portrait',title:'电商投流 — 促销活动篇',dur:'22s',tags:'投流,促销'},
+    {bv:'BV1hqKn6FEyf',t:'portrait',title:'电商投流 — 促销活动篇②',dur:'34s',tags:'投流,促销'},
+    {bv:'BV13qKn6cEYZ',t:'portrait',title:'电商投流 — 用户场景篇',dur:'29s',tags:'投流,场景'},
+  ],
+  'v-personal-drone':[
+    {bv:'BV141Kn69ENg',t:'landscape',title:'无人机航拍 — 川西高原',dur:'29s',tags:'航拍,川西'},
+    {bv:'BV1x1Kn69EQc',t:'landscape',title:'无人机航拍 — 海南海岸线',dur:'15s · 4K',tags:'航拍,海南'},
+    {bv:'BV121Kn69Emp',t:'landscape',title:'无人机航拍 — 翡翠湖',dur:'32s',tags:'航拍,翡翠湖'},
+  ],
+  'v-personal-creative':[
+    {bv:'BV1QqKn6FENc',t:'landscape',title:'创意短片 — 视觉节奏与情绪表达',dur:'40s · 4K',tags:'创意,情绪'},
+  ],
+};
 
-function renderVideo(bvid,type,title,dur,tags){
-  const tagsArr=tags.split(',').map(t=>'<span class="tag">'+t.trim()+'</span>').join('');
-  document.write('<div class="v-card '+type+' v-vid" data-bvid="'+bvid+'"><div class="player"><div class="ph" style="display:none">▶ 点击播放</div><iframe src="//player.bilibili.com/player.html?bvid='+bvid+'&page=1&high_quality=1&autoplay=0" allowfullscreen allow="autoplay"></iframe></div><div class="meta"><h3>'+title+'</h3><div class="info">'+dur+'</div><div class="tags">'+tagsArr+'</div></div></div>');
+let activeVid=null;
+
+function makeCard(v){
+  const tags=v.tags.split(',').map(t=>'<span class="tag">'+t.trim()+'</span>').join('');
+  return '<div class="v-card '+v.t+'" data-bvid="'+v.bv+'"><div class="player"><iframe src="https://player.bilibili.com/player.html?bvid='+v.bv+'&page=1&high_quality=1&autoplay=0" allowfullscreen allow="autoplay"></iframe></div><div class="meta"><h3>'+v.title+'</h3><div class="info">'+v.dur+'</div><div class="tags">'+tags+'</div></div></div>';
 }
 
-// After DOM ready, wire up click-to-pause-others
-document.addEventListener('DOMContentLoaded',function(){
-  document.querySelectorAll('.v-vid iframe').forEach(f=>{
-    f.addEventListener('load',function(){
-      f.contentWindow?.postMessage({type:'pause'},'*');
-    });
-  });
-});
+for(const[id,list] of Object.entries(videos)){
+  const grid=document.getElementById(id);
+  if(!grid) continue;
+  grid.innerHTML=list.map(makeCard).join('');
+}
 
+// Click to play/pause
 document.addEventListener('click',function(e){
-  const card=e.target.closest('.v-vid');
+  const card=e.target.closest('.v-card');
   if(!card) return;
-  const iframe=card.querySelector('iframe');
-  if(!iframe) return;
-  // Pause previous
-  if(activeIframe && activeIframe!==iframe){
-    activeIframe.contentWindow?.postMessage({type:'pause'},'*');
-  }
-  iframe.contentWindow?.postMessage({type:'play'},'*');
-  activeIframe=iframe;
+  const f=card.querySelector('iframe');
+  if(!f) return;
+  if(activeVid&&activeVid!==f) activeVid.contentWindow?.postMessage({type:'pause'},'*');
+  f.contentWindow?.postMessage({type:'play'},'*');
+  activeVid=f;
 });
 
-// ===== PHOTOS: direct load =====
-const photoData={
-  'g-product':[
-    'images/产品拍摄/bf1082d13931d277ad7d7a81e0bede84.jpg',
-    'images/产品拍摄/未命名_1.1.1.jpg','images/产品拍摄/未命名_1.2.1.jpg',
-    'images/产品拍摄/未命名_1.3.1.jpg','images/产品拍摄/未命名_1.4.1.jpg',
-    'images/产品拍摄/未命名_1.5.1.jpg','images/产品拍摄/未命名_1.5.2.jpg',
-    'images/产品拍摄/未命名_1.6.1.jpg','images/产品拍摄/未命名_1.7.1.jpg',
-    'images/产品拍摄/未命名_1.8.1.jpg','images/产品拍摄/未命名_1.9.1.jpg',
-    'images/产品拍摄/未命名_1.10.1.jpg','images/产品拍摄/未命名_1.17.1.jpg',
-  ],
-  'g-chuanxi':[
-    'images/个人图片作品/川西/玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措.jpg',
-    'images/个人图片作品/川西/敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景.jpg',
-    'images/个人图片作品/川西/何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼.jpg',
-    'images/个人图片作品/川西/"我路过经幡祝你一路平安"藏民说_"经幡在_神明在"_#川西自驾_#经幡_#雪山_#川西_#理塘.jpg',
-  ],
-  'g-hainan':[
-    'images/个人图片作品/海南/我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩.jpg',
-  ],
-  'g-xibei':[
-    'images/个人图片作品/西北/cf030956927c3841f3d5063b5fce4a7d.jpg',
-    'images/个人图片作品/西北/下雪后的洪水泥河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水泥河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影.jpg',
-    'images/个人图片作品/西北/3bca8e21578308690d48a240393ec5ae.jpg',
-    'images/个人图片作品/西北/065fb0a46c0058ba12110ba96c4ba1d0.jpg',
-  ],
+// ===== PHOTOS =====
+const photos={
+  'g-product':{
+    title:'产品拍摄',
+    files:[
+      ['bf1082d13931d277ad7d7a81e0bede84.jpg','咖啡机产品图'],
+      ['未命名_1.1.1.jpg','咖啡场景拍摄'],
+      ['未命名_1.2.1.jpg','产品细节特写'],
+      ['未命名_1.3.1.jpg','咖啡豆产品图'],
+      ['未命名_1.4.1.jpg','磨豆机展示'],
+      ['未命名_1.5.1.jpg','咖啡套装拍摄'],
+      ['未命名_1.5.2.jpg','产品组合图'],
+      ['未命名_1.6.1.jpg','场景布置'],
+      ['未命名_1.7.1.jpg','咖啡机细节'],
+      ['未命名_1.8.1.jpg','产品白底图'],
+      ['未命名_1.9.1.jpg','咖啡器具'],
+      ['未命名_1.10.1.jpg','场景俯拍'],
+      ['未命名_1.17.1.jpg','咖啡机侧面'],
+    ]
+  },
+  'g-chuanxi':{
+    title:'川西',
+    files:[
+      ['玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措.jpg','玉龙拉措 · 雪山圣湖'],
+      ['敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景.jpg','敬自由 · 川西公路'],
+      ['何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼.jpg','藏族婚礼 · 扎西德勒'],
+      ['"我路过经幡祝你一路平安"藏民说_"经幡在_神明在"_#川西自驾_#经幡_#雪山_#川西_#理塘.jpg','经幡与雪山 · 理塘'],
+    ]
+  },
+  'g-hainan':{
+    title:'海南',
+    files:[
+      ['我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩.jpg','海风扑面 · 三亚海滩'],
+    ]
+  },
+  'g-xibei':{
+    title:'西北',
+    files:[
+      ['cf030956927c3841f3d5063b5fce4a7d.jpg','西北风光 · 大漠孤烟'],
+      ['下雪后的洪水泥河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水泥河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影.jpg','雪后峡谷 · 肃州'],
+      ['3bca8e21578308690d48a240393ec5ae.jpg','西北地貌'],
+      ['065fb0a46c0058ba12110ba96c4ba1d0.jpg','西北风光'],
+    ]
+  },
 };
 
 function lb(src){document.getElementById('lbImg').src=src;document.getElementById('lb').classList.add('on')}
 
-for(const[id,files]of Object.entries(photoData)){
+for(const[id,data] of Object.entries(photos)){
   const grid=document.getElementById(id);
   if(!grid) continue;
-  files.forEach(f=>{
+  const base='images/'+(id.includes('product')?'产品拍摄':id.includes('chuanxi')?'个人图片作品/川西':id.includes('hainan')?'个人图片作品/海南':'个人图片作品/西北');
+  data.files.forEach(([fname,caption])=>{
     const card=document.createElement('div');
     card.className='p-card';
-    card.onclick=()=>lb(f);
-    const name=decodeURIComponent(f.split('/').pop().replace(/\.[^.]+$/,'')).substring(0,28);
-    card.innerHTML='<img src="'+f+'" onerror="this.parentElement.style.display=\'none\'"><div class="cap"><span>'+name+'</span></div>';
+    const src=base+'/'+fname;
+    card.onclick=()=>lb(src);
+    card.innerHTML='<img src="'+src+'" onerror="this.parentElement.style.display=\'none\'"><div class="cap"><span>'+caption+'</span></div>';
     grid.appendChild(card);
   });
 }
