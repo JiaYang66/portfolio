@@ -115,188 +115,89 @@ section{padding:4rem 0}
 <div class="lb" id="lb" onclick="this.classList.remove('on')"><span class="x">&times;</span><img id="lbImg" onclick="event.stopPropagation()"></div>
 
 <script>
-// ===== VIDEO DATA =====
-const videos={
+(function(){
+// ==== VIDEOS ====
+var VD={
   'v-commercial-brand':[
     {bv:'BV141Kn69EEY',t:'landscape',title:'咖啡磨豆机 — 品牌宣传片',dur:'41s · 4K',tags:'品牌宣传,产品视频'},
-    {bv:'BV141Kn69Ep1',t:'landscape',title:'磨萃一体咖啡机 — 产品宣传片',dur:'53s · 4K',tags:'产品宣传'},
+    {bv:'BV141Kn69Ep1',t:'landscape',title:'磨萃一体咖啡机 — 产品宣传片',dur:'53s · 4K',tags:'产品宣传'}
   ],
   'v-commercial-demo':[
     {bv:'BV1hqKn6FECp',t:'portrait',title:'咖啡吸尘器 — 产品功能演示',dur:'35s',tags:'产品摄影,布光'},
-    {bv:'BV1hqKn6FECe',t:'portrait',title:'磨萃一体咖啡机 · 快剪版',dur:'6s',tags:'快剪'},
+    {bv:'BV1hqKn6FECe',t:'portrait',title:'磨萃一体咖啡机 · 快剪版',dur:'6s',tags:'快剪'}
   ],
   'v-commercial-xhs':[
     {bv:'BV18zKn6ZEVN',t:'landscape',title:'咖啡饮品制作 — 沉浸式拍摄',dur:'56s · 4K',tags:'小红书,沉浸式'},
     {bv:'BV18zKn6ZEHj',t:'landscape',title:'冰淇淋机 — 小红书种草视频',dur:'1:32',tags:'小红书,种草'},
-    {bv:'BV1SzKn6ZEWe',t:'landscape',title:'磨豆机 — 小红书好物推荐',dur:'1:02 · 4K',tags:'小红书,好物推荐'},
+    {bv:'BV1SzKn6ZEWe',t:'landscape',title:'磨豆机 — 小红书好物推荐',dur:'1:02 · 4K',tags:'小红书,好物推荐'}
   ],
   'v-commercial-dy':[
     {bv:'BV1QqKn6FEMA',t:'portrait',title:'咖啡饮品制作 — 抖音信息流',dur:'59s · 4K',tags:'抖音,投流'},
     {bv:'BV1hqKn6FE4g',t:'portrait',title:'咖啡饮品制作 — 信息流②',dur:'53s · 4K',tags:'抖音,投流'},
-    {bv:'BV1bzKn6ZERa',t:'portrait',title:'磨豆机 — 场景化种草',dur:'1:05',tags:'场景化,种草'},
+    {bv:'BV1bzKn6ZERa',t:'portrait',title:'磨豆机 — 场景化种草',dur:'1:05',tags:'场景化,种草'}
   ],
   'v-commercial-ad':[
     {bv:'BV1DqKn6FEr2',t:'portrait',title:'电商投流 — 促销活动篇',dur:'22s',tags:'投流,促销'},
     {bv:'BV1hqKn6FEyf',t:'portrait',title:'电商投流 — 促销活动篇②',dur:'34s',tags:'投流,促销'},
-    {bv:'BV13qKn6cEYZ',t:'portrait',title:'电商投流 — 用户场景篇',dur:'29s',tags:'投流,场景'},
+    {bv:'BV13qKn6cEYZ',t:'portrait',title:'电商投流 — 用户场景篇',dur:'29s',tags:'投流,场景'}
   ],
   'v-personal-drone':[
     {bv:'BV141Kn69ENg',t:'landscape',title:'无人机航拍 — 川西高原',dur:'29s',tags:'航拍,川西'},
     {bv:'BV1x1Kn69EQc',t:'landscape',title:'无人机航拍 — 海南海岸线',dur:'15s · 4K',tags:'航拍,海南'},
-    {bv:'BV121Kn69Emp',t:'landscape',title:'无人机航拍 — 翡翠湖',dur:'32s',tags:'航拍,翡翠湖'},
+    {bv:'BV121Kn69Emp',t:'landscape',title:'无人机航拍 — 翡翠湖',dur:'32s',tags:'航拍,翡翠湖'}
   ],
   'v-personal-creative':[
-    {bv:'BV1QqKn6FENc',t:'landscape',title:'创意短片 — 视觉节奏与情绪表达',dur:'40s · 4K',tags:'创意,情绪'},
-  ],
+    {bv:'BV1QqKn6FENc',t:'landscape',title:'创意短片 — 视觉节奏与情绪表达',dur:'40s · 4K',tags:'创意,情绪'}
+  ]
 };
 
-let activeVid=null;
-
+var activeVid=null;
 function makeCard(v){
-  const tags=v.tags.split(',').map(t=>'<span class="tag">'+t.trim()+'</span>').join('');
-  return '<div class="v-card '+v.t+'" data-bvid="'+v.bv+'"><div class="player"><iframe src="https://player.bilibili.com/player.html?bvid='+v.bv+'&page=1&high_quality=1&autoplay=0" allowfullscreen allow="autoplay"></iframe></div><div class="meta"><h3>'+v.title+'</h3><div class="info">'+v.dur+'</div><div class="tags">'+tags+'</div></div></div>';
+  var tags=v.tags.split(',').map(function(t){return '<span class=tag>'+t.trim()+'</span>';}).join('');
+  var h='<div class="v-card '+v.t+'" data-bvid="'+v.bv+'"><div class=player><iframe src="https://player.bilibili.com/player.html?bvid='+v.bv+'&page=1&high_quality=1&autoplay=0" allowfullscreen allow=autoplay></iframe></div><div class=meta><h3>'+v.title+'</h3><div class=info>'+v.dur+'</div><div class=tags>'+tags+'</div></div></div>';
+  return h;
 }
-
-for(const[id,list] of Object.entries(videos)){
-  const grid=document.getElementById(id);
-  if(!grid) continue;
-  grid.innerHTML=list.map(makeCard).join('');
+for(var id in VD){
+  var g=document.getElementById(id);
+  if(g) g.innerHTML=VD[id].map(makeCard).join('');
 }
-
-// Click to play/pause
 document.addEventListener('click',function(e){
-  const card=e.target.closest('.v-card');
-  if(!card) return;
-  const f=card.querySelector('iframe');
+  var c=e.target.closest('.v-card');
+  if(!c) return;
+  var f=c.querySelector('iframe');
   if(!f) return;
-  if(activeVid&&activeVid!==f) activeVid.contentWindow?.postMessage({type:'pause'},'*');
-  f.contentWindow?.postMessage({type:'play'},'*');
+  if(activeVid&&activeVid!==f) activeVid.contentWindow&&activeVid.contentWindow.postMessage({type:'pause'},'*');
+  f.contentWindow&&f.contentWindow.postMessage({type:'play'},'*');
   activeVid=f;
 });
 
-// ===== PHOTOS (auto-generated from real filenames) =====
-const photos={
-  'g-product':{
-    files:[
-      'bf1082d13931d277ad7d7a81e0bede84.jpg',
-      '未命名_1.1.1.jpg',
-      '未命名_1.10.1.jpg',
-      '未命名_1.17.1.jpg',
-      '未命名_1.2.1.jpg',
-      '未命名_1.3.1.jpg',
-      '未命名_1.4.1.jpg',
-      '未命名_1.5.1.jpg',
-      '未命名_1.5.2.jpg',
-      '未命名_1.6.1.jpg',
-      '未命名_1.7.1.jpg',
-      '未命名_1.8.1.jpg',
-      '未命名_1.9.1.jpg',
-    ]
-  },
-  'g-chuanxi':{
-    files:[
-      '“我路过经幡祝你一路平安”藏民说_“经幡在_神明在”_#川西自驾_#经幡_#雪山_#川西_#理塘 (1).jpg',
-      '“我路过经幡祝你一路平安”藏民说_“经幡在_神明在”_#川西自驾_#经幡_#雪山_#川西_#理塘 (2).jpg',
-      '“我路过经幡祝你一路平安”藏民说_“经幡在_神明在”_#川西自驾_#经幡_#雪山_#川西_#理塘 (3).jpg',
-      '“我路过经幡祝你一路平安”藏民说_“经幡在_神明在”_#川西自驾_#经幡_#雪山_#川西_#理塘.jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (1).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (10).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (11).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (12).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (2).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (3).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (4).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (5).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (6).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (7).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (8).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (9).jpg',
-      '何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼.jpg',
-      '敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (1).jpg',
-      '敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (2).jpg',
-      '敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (3).jpg',
-      '敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (4).jpg',
-      '敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (5).jpg',
-      '敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (6).jpg',
-      '敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (7).jpg',
-      '敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景.jpg',
-      '玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (1).jpg',
-      '玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (2).jpg',
-      '玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (3).jpg',
-      '玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (4).jpg',
-      '玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (5).jpg',
-      '玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (6).jpg',
-      '玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (7).jpg',
-      '玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (8).jpg',
-      '玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措.jpg',
-    ]
-  },
-  'g-hainan':{
-    files:[
-      '我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (1).jpg',
-      '我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (2).jpg',
-      '我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (3).jpg',
-      '我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (4).jpg',
-      '我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (5).jpg',
-      '我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (6).jpg',
-      '我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (7).jpg',
-      '我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩.jpg',
-    ]
-  },
-  'g-xibei':{
-    files:[
-      '065fb0a46c0058ba12110ba96c4ba1d0.jpg',
-      '2d704e64885cb560aac08cd34cb7c103.jpg',
-      '386b714080f9734670084739bf8672fc.jpg',
-      '3bca8e21578308690d48a240393ec5ae.jpg',
-      '76f31884a9bcd8ce0fb6df19502ca011.jpg',
-      '77647abf77d2f2953f5bd92be63713e9.jpg',
-      '843b3c55ea05b70b30dbbe37a33325b9.jpg',
-      'cf030956927c3841f3d5063b5fce4a7d.jpg',
-      'image_真的想不到一片土地可以有这么多种..._0.jpg',
-      'image_真的想不到一片土地可以有这么多种..._1.jpg',
-      'image_真的想不到一片土地可以有这么多种..._2.jpg',
-      'image_真的想不到一片土地可以有这么多种..._3.jpg',
-      'image_真的想不到一片土地可以有这么多种..._4.jpg',
-      'image_真的想不到一片土地可以有这么多种..._5.jpg',
-      'image_真的想不到一片土地可以有这么多种..._6.jpg',
-      'image_真的想不到一片土地可以有这么多种..._7.jpg',
-      'image_真的想不到一片土地可以有这么多种..._8.jpg',
-      '下雪后的洪水河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (1).jpg',
-      '下雪后的洪水河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (2).jpg',
-      '下雪后的洪水河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (3).jpg',
-      '下雪后的洪水河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (4).jpg',
-      '下雪后的洪水河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (5).jpg',
-      '下雪后的洪水河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (6).jpg',
-      '下雪后的洪水河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影.jpg',
-    ]
-  },
+// ==== PHOTOS ====
+var PD={
+  'g-product':{dir:'产品拍摄',files:['bf1082d13931d277ad7d7a81e0bede84.jpg','未命名_1.1.1.jpg','未命名_1.2.1.jpg','未命名_1.3.1.jpg','未命名_1.4.1.jpg','未命名_1.5.1.jpg','未命名_1.5.2.jpg','未命名_1.6.1.jpg','未命名_1.7.1.jpg','未命名_1.8.1.jpg','未命名_1.9.1.jpg','未命名_1.10.1.jpg','未命名_1.17.1.jpg']},
+  'g-chuanxi':{dir:'个人图片作品/川西',files:['"我路过经幡祝你一路平安"藏民说_"经幡在_神明在"_#川西自驾_#经幡_#雪山_#川西_#理塘 (1).jpg','"我路过经幡祝你一路平安"藏民说_"经幡在_神明在"_#川西自驾_#经幡_#雪山_#川西_#理塘 (2).jpg','"我路过经幡祝你一路平安"藏民说_"经幡在_神明在"_#川西自驾_#经幡_#雪山_#川西_#理塘 (3).jpg','"我路过经幡祝你一路平安"藏民说_"经幡在_神明在"_#川西自驾_#经幡_#雪山_#川西_#理塘.jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (1).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (10).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (11).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (12).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (2).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (3).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (4).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (5).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (6).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (7).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (8).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼 (9).jpg','何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼.jpg','敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (1).jpg','敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (2).jpg','敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (3).jpg','敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (4).jpg','敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (5).jpg','敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (6).jpg','敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景 (7).jpg','敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景.jpg','玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (1).jpg','玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (2).jpg','玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (3).jpg','玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (4).jpg','玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (5).jpg','玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (6).jpg','玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (7).jpg','玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措 (8).jpg','玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措.jpg']},
+  'g-hainan':{dir:'个人图片作品/海南',files:['我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (1).jpg','我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (2).jpg','我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (3).jpg','我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (4).jpg','我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (5).jpg','我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (6).jpg','我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩 (7).jpg','我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩.jpg']},
+  'g-xibei':{dir:'个人图片作品/西北',files:['065fb0a46c0058ba12110ba96c4ba1d0.jpg','2d704e64885cb560aac08cd34cb7c103.jpg','386b714080f9734670084739bf8672fc.jpg','3bca8e21578308690d48a240393ec5ae.jpg','76f31884a9bcd8ce0fb6df19502ca011.jpg','77647abf77d2f2953f5bd92be63713e9.jpg','843b3c55ea05b70b30dbbe37a33325b9.jpg','cf030956927c3841f3d5063b5fce4a7d.jpg','image_真的想不到一片土地可以有这么多种..._0.jpg','image_真的想不到一片土地可以有这么多种..._1.jpg','image_真的想不到一片土地可以有这么多种..._2.jpg','image_真的想不到一片土地可以有这么多种..._3.jpg','image_真的想不到一片土地可以有这么多种..._4.jpg','image_真的想不到一片土地可以有这么多种..._5.jpg','image_真的想不到一片土地可以有这么多种..._6.jpg','image_真的想不到一片土地可以有这么多种..._7.jpg','image_真的想不到一片土地可以有这么多种..._8.jpg','下雪后的洪水泥河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水泥河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (1).jpg','下雪后的洪水泥河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水泥河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (2).jpg','下雪后的洪水泥河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水泥河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (3).jpg','下雪后的洪水泥河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水泥河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (4).jpg','下雪后的洪水泥河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水泥河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (5).jpg','下雪后的洪水泥河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水泥河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影 (6).jpg','下雪后的洪水泥河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水泥河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影.jpg']}
 };
-
 
 function lb(src){document.getElementById('lbImg').src=src;document.getElementById('lb').classList.add('on')}
 
-for(const[id,data] of Object.entries(photos)){
-  const grid=document.getElementById(id);
-  if(!grid) continue;
-  const base='images/'+(id.includes('product')?'产品拍摄':id.includes('chuanxi')?'个人图片作品/川西':id.includes('hainan')?'个人图片作品/海南':'个人图片作品/西北');
-  data.files.forEach(fname=>{
-    const card=document.createElement('div');
-    card.className='p-card';
-    const src=base+'/'+fname;
-    card.onclick=()=>lb(src);
-    const caption=fname.replace(/\.[^.]+$/,'').replace(/_/g,' ').substring(0,30);
-    card.innerHTML='<img src="'+src+'" onerror="this.parentElement.style.display=\'none\'"><div class="cap"><span>'+caption+'</span></div>';
-    grid.appendChild(card);
+for(var id in PD){
+  var d=PD[id], g=document.getElementById(id);
+  if(!g) continue;
+  d.files.forEach(function(f){
+    var c=document.createElement('div');
+    c.className='p-card';
+    var src='images/'+d.dir+'/'+f;
+    c.onclick=function(){lb(src)};
+    var cap=f.replace(/\.[^.]+$/,'').replace(/_/g,' ').substring(0,30);
+    c.innerHTML='<img src="'+src+'" onerror="this.parentElement.style.display=\'none\'"><div class=cap><span>'+cap+'</span></div>';
+    g.appendChild(c);
   });
-});
 }
 
 // Nav
-document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',function(){
-  document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));
-  this.classList.add('active');
-}));
+document.querySelectorAll('nav a').forEach(function(a){a.addEventListener('click',function(){document.querySelectorAll('nav a').forEach(function(x){x.classList.remove('active')});this.classList.add('active')})});
+})();
 </script>
 </body>
 </html>
