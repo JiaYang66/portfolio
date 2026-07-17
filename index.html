@@ -161,7 +161,7 @@ section{padding:4rem 0}
 <div class="lb" id="lb" onclick="this.classList.remove('on')"><span class="x">&times;</span><img id="lbImg" onclick="event.stopPropagation()"></div>
 
 <script>
-const CDN='https://cdn.jsdelivr.net/gh/JiaYang66/portfolio@main';
+const CDN='https://gitee.com/jiayang-huang/gerenyingshizuopinjihe/raw/master';
 document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',function(){document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
 function lb(src){document.getElementById('lbImg').src=CDN+'/'+src;document.getElementById('lb').classList.add('on')}
 
@@ -204,7 +204,7 @@ Object.entries(imgs).forEach(([id,files])=>{
     const url=CDN+'/'+f;
     card.onclick=()=>lb(f);
     const name=decodeURIComponent(f.split('/').pop().replace(/\.[^.]+$/,'')).substring(0,28);
-    card.innerHTML='<img src="'+url+'" loading="lazy" onerror="this.parentElement.style.display=\'none\'"><div class="cap"><span>'+name+'</span></div>';
+    card.innerHTML='<img referrerpolicy="no-referrer" src="'+url+'" loading="lazy" onerror="this.parentElement.style.display=\'none\'"><div class="cap"><span>'+name+'</span></div>';
     grid.appendChild(card);
   });
 });
