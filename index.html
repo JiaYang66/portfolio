@@ -11,7 +11,7 @@ body{font-family:"Noto Serif SC","STSong","Microsoft YaHei",serif;background:var
 .container{max-width:1300px;margin:0 auto;padding:0 2.5rem}
 .hero{text-align:center;padding:5rem 1.5rem 2.5rem}
 .hero .brand{font-size:.72rem;letter-spacing:5px;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
-.hero h1{font-size:3rem;font-weight:300;letter-spacing:8px;color:#e0e0e0;font-family:"Noto Serif SC","STSong",serif}
+.hero h1{font-size:3rem;font-weight:300;letter-spacing:8px;color:#e0e0e0}
 .hero .role{font-size:.95rem;color:var(--muted);letter-spacing:3px;margin:.5rem 0 1.2rem}
 .hero .contact{display:flex;gap:2rem;justify-content:center;font-size:.82rem;color:var(--muted);flex-wrap:wrap}
 .hero .contact a{color:var(--accent);text-decoration:none}
@@ -21,7 +21,7 @@ nav a:hover,nav a.active{color:var(--accent)}
 section{padding:4rem 0}
 .sec-h{text-align:center;margin-bottom:2.5rem}
 .sec-h .num{font-size:.72rem;color:var(--accent);letter-spacing:3px;display:block;margin-bottom:.5rem}
-.sec-h h2{font-size:1.8rem;font-weight:300;letter-spacing:3px;color:#ddd;font-family:"Noto Serif SC","STSong",serif}
+.sec-h h2{font-size:1.8rem;font-weight:300;letter-spacing:3px;color:#ddd}
 .sub{text-align:center;font-size:.82rem;color:var(--accent);letter-spacing:2px;margin:2.5rem 0 1.5rem;text-transform:uppercase}
 .v-grid-land{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.5rem}
 .v-grid-port{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem;justify-content:center}
@@ -30,9 +30,9 @@ section{padding:4rem 0}
 .v-card .player{position:relative;background:#0a0a0a}
 .v-card.landscape .player{aspect-ratio:16/9}
 .v-card.portrait .player{aspect-ratio:9/16}
-.v-card .player iframe,.v-card .player .placeholder{position:absolute;inset:0;width:100%;height:100%;border:0}
-.v-card .player .placeholder{display:flex;align-items:center;justify-content:center;color:#444;font-size:.8rem;cursor:pointer;transition:.2s}
-.v-card .player .placeholder:hover{color:var(--accent)}
+.v-card .player iframe,.v-card .player .ph{position:absolute;inset:0;width:100%;height:100%;border:0}
+.v-card .player .ph{display:flex;align-items:center;justify-content:center;color:#444;font-size:.8rem;cursor:pointer;transition:.2s;background:#0a0a0a}
+.v-card .player .ph:hover{color:var(--accent)}
 .v-card .meta{padding:1rem 1.1rem}
 .v-card .meta h3{font-size:.95rem;font-weight:400;color:#ccc;margin-bottom:3px}
 .v-card .meta .info{font-size:.75rem;color:var(--muted)}
@@ -41,8 +41,7 @@ section{padding:4rem 0}
 .p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
 .p-card{aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:var(--card);cursor:zoom-in;border:1px solid var(--border);transition:.25s;position:relative}
 .p-card:hover{transform:scale(1.02);border-color:#444}
-.p-card img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
-.p-card img.loaded{opacity:1}
+.p-card img{width:100%;height:100%;object-fit:cover}
 .p-card .cap{position:absolute;bottom:0;left:0;right:0;padding:.8rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,.8));opacity:0;transition:.25s}
 .p-card:hover .cap{opacity:1}
 .p-card .cap span{font-size:.72rem;color:#ddd}
@@ -84,59 +83,34 @@ section{padding:4rem 0}
 <section id="commercial">
   <div class="sec-h"><span class="num">01</span><h2>商业作品</h2></div>
   <div class="sub">产品宣传片 · 横屏</div>
-  <div class="v-grid-land">
-    <div class="v-card landscape v-vid" data-bvid="BV141Kn69EEY"><div class="player"></div><div class="meta"><h3>咖啡磨豆机 — 品牌宣传片</h3><div class="info">41s · 4K</div><div class="tags"><span class="tag">品牌宣传</span><span class="tag">产品视频</span></div></div></div>
-    <div class="v-card landscape v-vid" data-bvid="BV141Kn69Ep1"><div class="player"></div><div class="meta"><h3>磨萃一体咖啡机 — 产品宣传片</h3><div class="info">53s · 4K</div><div class="tags"><span class="tag">产品宣传</span></div></div></div>
-  </div>
+  <div class="v-grid-land"><script>renderVideo('BV141Kn69EEY','landscape','咖啡磨豆机 — 品牌宣传片','41s · 4K','品牌宣传,产品视频');renderVideo('BV141Kn69Ep1','landscape','磨萃一体咖啡机 — 产品宣传片','53s · 4K','产品宣传');</script></div>
 
   <div class="sub">产品功能演示 · 竖屏</div>
-  <div class="v-grid-port">
-    <div class="v-card portrait v-vid" data-bvid="BV1hqKn6FECp"><div class="player"></div><div class="meta"><h3>咖啡吸尘器</h3><div class="info">35s</div></div></div>
-    <div class="v-card portrait v-vid" data-bvid="BV1hqKn6FECe"><div class="player"></div><div class="meta"><h3>磨萃一体·快剪</h3><div class="info">6s</div></div></div>
-  </div>
+  <div class="v-grid-port"><script>renderVideo('BV1hqKn6FECp','portrait','咖啡吸尘器','35s','产品摄影,布光');renderVideo('BV1hqKn6FECe','portrait','磨萃一体·快剪','6s','快剪');</script></div>
 
   <div class="sub">小红书</div>
-  <div class="v-grid-land">
-    <div class="v-card landscape v-vid" data-bvid="BV18zKn6ZEVN"><div class="player"></div><div class="meta"><h3>咖啡饮品制作 — 沉浸式拍摄</h3><div class="info">56s · 4K</div></div></div>
-    <div class="v-card landscape v-vid" data-bvid="BV18zKn6ZEHj"><div class="player"></div><div class="meta"><h3>冰淇淋机 — 小红书种草视频</h3><div class="info">1:32</div></div></div>
-    <div class="v-card landscape v-vid" data-bvid="BV1SzKn6ZEWe"><div class="player"></div><div class="meta"><h3>磨豆机 — 小红书好物推荐</h3><div class="info">1:02 · 4K</div></div></div>
-  </div>
+  <div class="v-grid-land"><script>renderVideo('BV18zKn6ZEVN','landscape','咖啡饮品制作 — 沉浸式拍摄','56s · 4K','小红书,沉浸式');renderVideo('BV18zKn6ZEHj','landscape','冰淇淋机 — 小红书种草视频','1:32','小红书,种草');renderVideo('BV1SzKn6ZEWe','landscape','磨豆机 — 小红书好物推荐','1:02 · 4K','小红书,好物推荐');</script></div>
 
   <div class="sub">抖音信息流 · 竖屏</div>
-  <div class="v-grid-port">
-    <div class="v-card portrait v-vid" data-bvid="BV1QqKn6FEMA"><div class="player"></div><div class="meta"><h3>咖啡饮品制作</h3><div class="info">59s · 4K竖屏</div></div></div>
-    <div class="v-card portrait v-vid" data-bvid="BV1hqKn6FE4g"><div class="player"></div><div class="meta"><h3>咖啡饮品制作②</h3><div class="info">53s · 4K竖屏</div></div></div>
-    <div class="v-card portrait v-vid" data-bvid="BV1bzKn6ZERa"><div class="player"></div><div class="meta"><h3>磨豆机 — 场景化种草</h3><div class="info">1:05</div></div></div>
-  </div>
+  <div class="v-grid-port"><script>renderVideo('BV1QqKn6FEMA','portrait','咖啡饮品制作','59s · 4K竖屏','抖音,投流');renderVideo('BV1hqKn6FE4g','portrait','咖啡饮品制作②','53s · 4K竖屏','抖音,投流');renderVideo('BV1bzKn6ZERa','portrait','磨豆机 — 场景化种草','1:05','场景化');</script></div>
 
   <div class="sub">电商投流素材 · 竖屏</div>
-  <div class="v-grid-port">
-    <div class="v-card portrait v-vid" data-bvid="BV1DqKn6FEr2"><div class="player"></div><div class="meta"><h3>促销活动篇</h3><div class="info">22s</div></div></div>
-    <div class="v-card portrait v-vid" data-bvid="BV1hqKn6FEyf"><div class="player"></div><div class="meta"><h3>促销活动篇②</h3><div class="info">34s</div></div></div>
-    <div class="v-card portrait v-vid" data-bvid="BV13qKn6cEYZ"><div class="player"></div><div class="meta"><h3>用户场景篇</h3><div class="info">29s</div></div></div>
-  </div>
+  <div class="v-grid-port"><script>renderVideo('BV1DqKn6FEr2','portrait','促销活动篇','22s','投流,促销');renderVideo('BV1hqKn6FEyf','portrait','促销活动篇②','34s','投流,促销');renderVideo('BV13qKn6cEYZ','portrait','用户场景篇','29s','投流,场景');</script></div>
 </section>
 
 <section id="personal">
   <div class="sec-h"><span class="num">02</span><h2>个人创作</h2></div>
   <div class="sub">无人机航拍 · 横屏</div>
-  <div class="v-grid-land">
-    <div class="v-card landscape v-vid" data-bvid="BV141Kn69ENg"><div class="player"></div><div class="meta"><h3>无人机航拍 — 川西高原</h3><div class="info">29s</div></div></div>
-    <div class="v-card landscape v-vid" data-bvid="BV1x1Kn69EQc"><div class="player"></div><div class="meta"><h3>无人机航拍 — 海南海岸线</h3><div class="info">15s · 4K</div></div></div>
-    <div class="v-card landscape v-vid" data-bvid="BV121Kn69Emp"><div class="player"></div><div class="meta"><h3>无人机航拍 — 翡翠湖</h3><div class="info">32s</div></div></div>
-  </div>
+  <div class="v-grid-land"><script>renderVideo('BV141Kn69ENg','landscape','无人机航拍 — 川西高原','29s','航拍,川西');renderVideo('BV1x1Kn69EQc','landscape','无人机航拍 — 海南海岸线','15s · 4K','航拍,海南');renderVideo('BV121Kn69Emp','landscape','无人机航拍 — 翡翠湖','32s','航拍,翡翠湖');</script></div>
   <div class="sub">创意短片 · 横屏</div>
-  <div class="v-grid-land">
-    <div class="v-card landscape v-vid" data-bvid="BV1QqKn6FENc"><div class="player"></div><div class="meta"><h3>创意短片 — 视觉节奏与情绪表达</h3><div class="info">40s · 4K</div></div></div>
-  </div>
+  <div class="v-grid-land"><script>renderVideo('BV1QqKn6FENc','landscape','创意短片 — 视觉节奏与情绪表达','40s · 4K','创意,情绪');</script></div>
 </section>
 
-<section id="photo">
-  <div class="sec-h"><span class="num">03</span><h2>摄影作品</h2></div>
-  <div class="sub">产品拍摄</div><div class="p-grid" id="photo-product"></div>
-  <div class="sub">川西</div><div class="p-grid" id="photo-chuanxi"></div>
-  <div class="sub">海南</div><div class="p-grid" id="photo-hainan"></div>
-  <div class="sub">西北</div><div class="p-grid" id="photo-xibei"></div>
+<section id="photo"><div class="sec-h"><span class="num">03</span><h2>摄影作品</h2></div>
+<div class="sub">产品拍摄</div><div class="p-grid" id="g-product"></div>
+<div class="sub">川西</div><div class="p-grid" id="g-chuanxi"></div>
+<div class="sub">海南</div><div class="p-grid" id="g-hainan"></div>
+<div class="sub">西北</div><div class="p-grid" id="g-xibei"></div>
 </section>
 
 <section id="about">
@@ -145,168 +119,86 @@ section{padding:4rem 0}
     <p>计算机专业出身，相机才是我的表达方式。从大学辅修摄影开始，到独立运营淘宝店铺完成2000+订单的产品视觉全案，再到现在专注于短视频内容创作——始终坚持好内容为转化服务。</p>
     <p>熟练使用 PR / 剪映 / 达芬奇，PS / LR 精修。擅长无人机航拍，热爱风光摄影。现就职于广东初巴科技，负责抖音短视频运营与内容策划。</p>
     <div class="skill-wrap">
-      <span>产品摄影</span><span>布光构图</span><span>PR · 剪映</span><span>达芬奇调色</span>
-      <span>Photoshop</span><span>无人机航拍</span><span>AI 视频生成</span>
-      <span>抖音运营</span><span>电商运营</span><span>数据分析</span>
-    </div>
+      <span>产品摄影</span><span>布光构图</span><span>PR · 剪映</span><span>达芬奇调色</span><span>Photoshop</span><span>无人机航拍</span><span>AI 视频生成</span><span>抖音运营</span><span>电商运营</span><span>数据分析</span></div>
   </div>
-</section>
+</section></div>
 
-</div>
-
-<div class="ft">
-  <p>黄嘉杨 © 2026 · 视觉内容创作者</p>
-  <p style="margin-top:.5rem"><a href="https://www.douyin.com/user/self?from_tab_name=main">抖音</a> · <a href="https://space.bilibili.com/489995620">B站</a> · <a href="https://github.com/JiaYang66/portfolio">GitHub</a></p>
-</div>
-
+<div class="ft"><p>黄嘉杨 © 2026 · 视觉内容创作者</p><p style="margin-top:.5rem"><a href="https://www.douyin.com/user/self?from_tab_name=main">抖音</a> · <a href="https://space.bilibili.com/489995620">B站</a> · <a href="https://github.com/JiaYang66/portfolio">GitHub</a></p></div>
 <div class="lb" id="lb" onclick="this.classList.remove('on')"><span class="x">&times;</span><img id="lbImg" onclick="event.stopPropagation()"></div>
 
 <script>
-const CDN='https://gitee.com/jiayang-huang/gerenyingshizuopinjihe/raw/master';
+// ===== VIDEO: immediate load with mutual exclusion =====
+let activeIframe=null;
 
-// ========== VIDEO LAZY LOAD + MUTUAL EXCLUSION ==========
-const videoObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    const card = e.target;
-    const bvid = card.dataset.bvid;
-    const player = card.querySelector('.player');
-    if (!bvid) return;
-    
-    if (e.isIntersecting) {
-      // In viewport → load iframe
-      if (!player.querySelector('iframe')) {
-        player.innerHTML = ''; // clear placeholder
-        const iframe = document.createElement('iframe');
-        iframe.src = `//player.bilibili.com/player.html?bvid=${bvid}&page=1&high_quality=1&autoplay=0`;
-        iframe.allowFullscreen = true;
-        iframe.setAttribute('allow','autoplay');
-        player.appendChild(iframe);
-        iframe.addEventListener('load', () => {
-          // Send pause command after load
-          setTimeout(() => iframe.contentWindow?.postMessage({type:'pause'},'*'), 500);
-        });
-        card._iframe = iframe;
-      }
-    } else {
-      // Out of viewport → remove iframe
-      if (player.querySelector('iframe')) {
-        player.innerHTML = '<div class="placeholder">▶ 点击播放</div>';
-        card._iframe = null;
-      }
-    }
+function renderVideo(bvid,type,title,dur,tags){
+  const tagsArr=tags.split(',').map(t=>'<span class="tag">'+t.trim()+'</span>').join('');
+  document.write('<div class="v-card '+type+' v-vid" data-bvid="'+bvid+'"><div class="player"><div class="ph" style="display:none">▶ 点击播放</div><iframe src="//player.bilibili.com/player.html?bvid='+bvid+'&page=1&high_quality=1&autoplay=0" allowfullscreen allow="autoplay"></iframe></div><div class="meta"><h3>'+title+'</h3><div class="info">'+dur+'</div><div class="tags">'+tagsArr+'</div></div></div>');
+}
+
+// After DOM ready, wire up click-to-pause-others
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.v-vid iframe').forEach(f=>{
+    f.addEventListener('load',function(){
+      f.contentWindow?.postMessage({type:'pause'},'*');
+    });
   });
-}, { rootMargin: '300px' });
+});
 
-// Track which video is currently playing
-let activeVideo = null;
-document.addEventListener('click', function(e) {
-  const card = e.target.closest('.v-vid');
-  if (!card) return;
-  const player = card.querySelector('.player');
-  
+document.addEventListener('click',function(e){
+  const card=e.target.closest('.v-vid');
+  if(!card) return;
+  const iframe=card.querySelector('iframe');
+  if(!iframe) return;
   // Pause previous
-  if (activeVideo && activeVideo !== card) {
-    const prevFrame = activeVideo.querySelector('iframe');
-    if (prevFrame) prevFrame.contentWindow?.postMessage({type:'pause'},'*');
+  if(activeIframe && activeIframe!==iframe){
+    activeIframe.contentWindow?.postMessage({type:'pause'},'*');
   }
-  
-  // Play this one
-  const iframe = player.querySelector('iframe');
-  if (iframe) {
-    iframe.contentWindow?.postMessage({type:'play'},'*');
-    activeVideo = card;
-  } else {
-    // Click placeholder → load
-    const bvid = card.dataset.bvid;
-    if (bvid && !iframe) {
-      player.innerHTML = '';
-      const f = document.createElement('iframe');
-      f.src = `//player.bilibili.com/player.html?bvid=${bvid}&page=1&high_quality=1&autoplay=1`;
-      f.allowFullscreen = true;
-      f.setAttribute('allow','autoplay');
-      player.appendChild(f);
-      card._iframe = f;
-      activeVideo = card;
-      videoObserver.observe(card);
-    }
-  }
+  iframe.contentWindow?.postMessage({type:'play'},'*');
+  activeIframe=iframe;
 });
 
-// Init all video placeholders + observe
-document.querySelectorAll('.v-vid').forEach(card => {
-  const player = card.querySelector('.player');
-  player.innerHTML = '<div class="placeholder">▶ 点击播放</div>';
-  videoObserver.observe(card);
-});
-
-// ========== IMAGE LAZY LOAD ==========
-const imgObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const card = e.target;
-      const dataSrc = card.dataset.src;
-      if (dataSrc && !card.querySelector('img')) {
-        const img = document.createElement('img');
-        img.src = CDN + '/' + dataSrc;
-        img.onload = () => img.classList.add('loaded');
-        img.onerror = () => card.style.display = 'none';
-        card.appendChild(img);
-      }
-    }
-  });
-}, { rootMargin: '400px' });
-
-// ========== PHOTO DATA ==========
-const imgs = {
-  'photo-product': [
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/bf1082d13931d277ad7d7a81e0bede84.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.1.1.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.2.1.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.3.1.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.4.1.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.5.1.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.5.2.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.6.1.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.7.1.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.8.1.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.9.1.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.10.1.jpg',
-    'images/%E4%BA%A7%E5%93%81%E6%8B%8D%E6%91%84/%E6%9C%AA%E5%91%BD%E5%90%8D_1.17.1.jpg',
+// ===== PHOTOS: direct load =====
+const photoData={
+  'g-product':[
+    'images/产品拍摄/bf1082d13931d277ad7d7a81e0bede84.jpg',
+    'images/产品拍摄/未命名_1.1.1.jpg','images/产品拍摄/未命名_1.2.1.jpg',
+    'images/产品拍摄/未命名_1.3.1.jpg','images/产品拍摄/未命名_1.4.1.jpg',
+    'images/产品拍摄/未命名_1.5.1.jpg','images/产品拍摄/未命名_1.5.2.jpg',
+    'images/产品拍摄/未命名_1.6.1.jpg','images/产品拍摄/未命名_1.7.1.jpg',
+    'images/产品拍摄/未命名_1.8.1.jpg','images/产品拍摄/未命名_1.9.1.jpg',
+    'images/产品拍摄/未命名_1.10.1.jpg','images/产品拍摄/未命名_1.17.1.jpg',
   ],
-  'photo-chuanxi': [
-    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E5%B7%9D%E8%A5%BF/%E7%8E%89%E9%BE%99%E6%8B%89%E6%8E%AA%EF%BC%8C%E7%BE%8E%E5%88%B0%E5%A4%B1%E8%AF%AD%EF%BC%81%23%E6%97%85%E8%A1%8C%E6%91%84%E5%BD%B1_%23%E9%9B%AA%E5%B1%B1_%23%E5%B7%9D%E8%A5%BF_%23%E5%B7%9D%E8%A5%BF%E7%BE%8E%E6%99%AF_%23%E7%8E%89%E9%BE%99%E6%8B%89%E6%8E%AA.jpg',
-    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E5%B7%9D%E8%A5%BF/%E6%95%AC%E5%95%A5%E4%B8%8D%E5%A6%82%E6%95%AC%E8%87%AA%E7%94%B1_%23%E6%91%84%E5%BD%B1_%23%E6%97%85%E8%A1%8C%E6%91%84%E5%BD%B1_%23%E6%97%85%E8%A1%8C%E7%A2%8E%E7%89%87_%23%E5%B7%9D%E8%A5%BF_%23%E5%B7%9D%E8%A5%BF%E7%BE%8E%E6%99%AF.jpg',
+  'g-chuanxi':[
+    'images/个人图片作品/川西/玉龙拉措，美到失语！#旅行摄影_#雪山_#川西_#川西美景_#玉龙拉措.jpg',
+    'images/个人图片作品/川西/敬啥不如敬自由_#摄影_#旅行摄影_#旅行碎片_#川西_#川西美景.jpg',
+    'images/个人图片作品/川西/何其有幸受到藏族同胞邀请参加婚礼。虽然听不懂他们的藏话和方言_但每个人都非常热情真诚和可爱_感谢特别的体验_扎西德勒！_#少数民族文化_#藏族_#藏族婚礼.jpg',
+    'images/个人图片作品/川西/"我路过经幡祝你一路平安"藏民说_"经幡在_神明在"_#川西自驾_#经幡_#雪山_#川西_#理塘.jpg',
   ],
-  'photo-hainan': [
-    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E6%B5%B7%E5%8D%97/%E6%88%91%E4%B8%80%E7%9B%B4%E6%8E%A2%E7%B4%A2%E6%9C%80%E9%80%82%E5%90%88%E6%90%AD%E3%80%8C%E6%B5%86%E6%9E%9C%E3%80%8D%E7%9A%84%E7%94%BB%E9%9D%A2_%E7%9B%B4%E5%88%B0%E6%88%91%E6%9D%A5%E5%88%B0%E6%B5%B7%E5%8D%97_%E5%BD%93%E6%B5%B7%E9%A3%8E%E6%89%91%E9%9D%A2%E8%80%8C%E6%9D%A5%E7%9A%84%E4%B8%80%E5%88%BB_%E6%89%80%E6%9C%89%E7%9A%84%E6%83%B3%E8%B1%A1%EF%BC%8C%E9%83%BD%E6%9C%89%E4%BA%86%E7%AD%94%E6%A1%88%E3%80%82_%23%E6%B5%B7%E5%8D%97_%23%E4%B8%89%E4%BA%9A_%23%E6%91%84%E5%BD%B1_%23%E6%B5%B7%E8%BE%B9_%23%E6%B5%B7%E6%BB%A9.jpg',
+  'g-hainan':[
+    'images/个人图片作品/海南/我一直探索最适合搭「浆果」的画面_直到我来到海南_当海风扑面而来的一刻_所有的想象，都有了答案。_#海南_#三亚_#摄影_#海边_#海滩.jpg',
   ],
-  'photo-xibei': [
-    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E8%A5%BF%E5%8C%97/cf030956927c3841f3d5063b5fce4a7d.jpg',
-    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E8%A5%BF%E5%8C%97/%E4%B8%8B%E9%9B%AA%E5%90%8E%E7%9A%84%E6%B4%AA%E6%B0%B4%E6%B2%B3%E5%A4%A7%E5%B3%A1%E8%B0%B7%EF%BC%8C%E5%A4%AA%E5%A3%AE%E8%A7%82%E4%BA%86%E3%80%82%E6%9C%AC%E4%BB%A5%E4%B8%BA%E4%B8%80%E8%B7%AF%E4%B8%8A%E4%B8%8D%E4%BC%9A%E7%94%A8%E5%88%B0%E9%98%B2%E6%BB%91%E9%93%BE%EF%BC%8C%E6%B2%A1%E6%83%B3%E5%88%B0%E4%BB%8A%E5%A4%A9%E5%AE%83%E6%98%AF%E6%8B%AF%E6%95%91%E6%88%91%E7%9A%84hero_%23%E6%B4%AA%E6%B0%B4%E6%B2%B3%E5%A4%A7%E5%B3%A1%E8%B0%B7_%23%E8%82%83%E5%B7%9E%E5%8C%BA_%23%E5%B0%8F%E9%B9%8F_%23%E5%B0%8F%E9%B9%8Fmona_%23%E6%91%84%E5%BD%B1.jpg',
-    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E8%A5%BF%E5%8C%97/3bca8e21578308690d48a240393ec5ae.jpg',
-    'images/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E7%89%87%E4%BD%9C%E5%93%81/%E8%A5%BF%E5%8C%97/065fb0a46c0058ba12110ba96c4ba1d0.jpg',
+  'g-xibei':[
+    'images/个人图片作品/西北/cf030956927c3841f3d5063b5fce4a7d.jpg',
+    'images/个人图片作品/西北/下雪后的洪水泥河大峡谷，太壮观了。本以为一路上不会用到防滑链，没想到今天它是拯救我的hero_#洪水泥河大峡谷_#肃州区_#小鹏_#小鹏mona_#摄影.jpg',
+    'images/个人图片作品/西北/3bca8e21578308690d48a240393ec5ae.jpg',
+    'images/个人图片作品/西北/065fb0a46c0058ba12110ba96c4ba1d0.jpg',
   ],
 };
 
-function lb(src){document.getElementById('lbImg').src=CDN+'/'+src;document.getElementById('lb').classList.add('on')}
+function lb(src){document.getElementById('lbImg').src=src;document.getElementById('lb').classList.add('on')}
 
-Object.entries(imgs).forEach(([id,files])=>{
+for(const[id,files]of Object.entries(photoData)){
   const grid=document.getElementById(id);
-  if(!grid) return;
+  if(!grid) continue;
   files.forEach(f=>{
     const card=document.createElement('div');
     card.className='p-card';
-    card.dataset.src = f;
     card.onclick=()=>lb(f);
     const name=decodeURIComponent(f.split('/').pop().replace(/\.[^.]+$/,'')).substring(0,28);
-    const cap=document.createElement('div');
-    cap.className='cap';
-    cap.innerHTML='<span>'+name+'</span>';
-    card.appendChild(cap);
-    imgObserver.observe(card);
+    card.innerHTML='<img src="'+f+'" onerror="this.parentElement.style.display=\'none\'"><div class="cap"><span>'+name+'</span></div>';
     grid.appendChild(card);
   });
-});
+}
 
 // Nav
 document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',function(){
